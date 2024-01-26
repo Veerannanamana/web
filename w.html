@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolyCET Seat Eligibility Checker</title>
+    <style>
+        .box1 {
+            background-color: #0f5e67;
+            width: 50%;
+            float: left;
+            box-sizing: border-box;
+            padding: 20px;
+            margin-left: 20%;
+            text-align: center;
+            top:10%;
+        }
+    </style>
+</head>
+
+<body bgcolor="cyan">
+    <div class="box1">
+    <h2>PolyCET Seat Eligibility Checker</h2>
+
+    <label for="rankInput">Enter your PolyCET Rank: </label>
+    <input type="number" id="rankInput" placeholder="Enter your rank">
+    <button onclick="checkEligibility()">Check Eligibility</button>
+
+    <p id="eligibilityStatus"></p>
+    </div>
+    <script>
+        function checkEligibility() {
+            var rank = document.getElementById('rankInput').value;
+
+            // Check eligibility criteria
+            if (rank <= 5000) {
+                document.getElementById('eligibilityStatus').innerHTML = "Congratulations! You are eligible for a Polytechnic seat and  also gain the free bus service.";
+            }
+            else if(rank>=10000 && rank<=20000){
+                document.getElementById('eligibilityStatus').innerHTML = "Congratulations! You are eligible for a Polytechnic seat."
+            } 
+            else {
+                document.getElementById('eligibilityStatus').innerHTML = "Sorry, you are not eligible for a Polytechnic seat. Go to management seat";
+            }
+        }
+    </script>
+</body>
+
+</html>
