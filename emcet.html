@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMCET Counseling Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        select, input {
+            margin-bottom: 16px;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to EMCET Counseling Page</h1>
+        <form id="counselingForm">
+            <label for="branch">Select Branch:</label>
+            <select id="branch" name="branch">
+                <option value="a">None</option>
+                <option value="aid">AI and Data Science</option>
+                <option value="cyber">Cybersecurity</option>
+                <option value="ai">Artificial Intelligence</option>
+                <option value="aiml">AI and Machine Learning</option>
+                <option value="ds">Data Science</option>
+            </select>
+
+            <label for="caste">Select Caste:</label>
+            <select id="caste" name="caste">
+                <option value="G">NONE</option>
+                <option value="General">General</option>
+                <option value="obc">OBC</option>
+                <option value="sc">SC</option>
+                <option value="st">ST</option>
+            </select>
+
+            <label for="rank">Enter Rank:</label>
+            <input type="number" id="rank" name="rank" placeholder="Enter your rank">
+
+            <button type="button" onclick="checkEligibility()">Check Eligibility</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkEligibility() {
+            var branch = document.getElementById("branch").value;
+            var caste = document.getElementById("caste").value;
+            var rank = document.getElementById("rank").value;
+            var resultContainer = document.getElementById("result");
+
+           var eligibility = checkEligibilityCriteria(branch, caste, rank)
+            resultContainer.innerHTML = eligibility ? "Congratulations! You are eligible for a seat." : "Sorry, you are not eligible for a seat.";
+            }
+
+        function checkEligibilityCriteria(branch, caste, rank) {
+            if (
+                (branch === "aid" || branch === "cyber" || branch === "ai" || branch === "aiml" || branch === "ds") &&
+                caste === "general" &&
+                rank <= 40000
+            )
+            {
+                return true;
+            }
+             else if ((branch === "aid" || branch === "cyber" || branch === "ai" ||branch === "aiml" ||  branch === "ds" )
+             && caste === "obc" && rank <= 50000) {
+                return true;
+            } 
+            else if ((branch === "aid" || branch === "cyber" || branch === "ai" ||branch === "aiml" ||  branch === "ds" )
+             && caste === "sc" && rank <= 60000) {
+                return true;
+             }
+             else if ((branch === "aid" || branch === "cyber" || branch === "ai" ||branch === "aiml" ||  branch === "ds" )
+             && caste === "st" && rank <= 65000) {
+                return true;
+             }
+            else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
